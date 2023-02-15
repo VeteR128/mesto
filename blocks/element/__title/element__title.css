@@ -1,0 +1,15 @@
+.element__title {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 900;
+  font-size: 1.5rem;
+  line-height: 120%;
+
+  margin-bottom: 31px;
+  margin-left: 21px;
+  overflow: hidden;
+  align-self: center;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
