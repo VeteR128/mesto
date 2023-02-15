@@ -2,3 +2,9 @@
   border-radius: 50%;
   width: 120px;
 }
+@media screen and (max-width: 320px) {
+  .profile__avatar {
+    grid-row: 1;
+    justify-self: center;
+  }
+}

@@ -8,3 +8,11 @@
   grid-row: 2;
   margin: 0;
 }
+@media screen and (max-width: 320px) {
+  .profile__subtitle {
+    text-align: center;
+    font-size: 0.875rem;
+    line-height: 121%;
+    max-height: 14px;
+  }
+}

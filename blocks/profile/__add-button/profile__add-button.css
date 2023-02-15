@@ -9,6 +9,7 @@
   width: 100%;
   margin-right: 0;
   max-height: 50px;
+  height: 100%;
   align-self: center;
 }
 @media screen and (max-width: 649px) {
@@ -17,5 +18,11 @@
     grid-row: 2;
     grid-column: span 2;
     margin-top: 25px;
+  }
+}
+@media screen and (max-width: 320px) {
+  .profile__add-button {
+    grid-row: 3;
+    margin-top: 36px;
   }
 }

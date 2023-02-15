@@ -13,3 +13,12 @@
     font-size: 1.525rem;
   }
 }
+@media screen and (max-width: 320px) {
+  .profile__title {
+    font-size: 1.687rem;
+    line-height: 122%;
+    text-align: end;
+    margin-right: 10px;
+    margin-top: 22.25px;
+  }
+}
