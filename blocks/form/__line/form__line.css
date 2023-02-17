@@ -1,0 +1,10 @@
+.form__line {
+  opacity: 0.2;
+  border: 1px solid #000000;
+  margin: 0 36px;
+  margin-top: 13px;
+  margin-bottom: 30px;
+}
+.form__line:last-of-type {
+  margin-bottom: 48px;
+}

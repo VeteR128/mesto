@@ -1,4 +1,5 @@
 .profile__edit-button {
+  box-sizing: border-box;
   border: 1px solid #ffffff;
   max-width: 24px;
   width: 100%;

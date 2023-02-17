@@ -1,0 +1,4 @@
+.popup__container {
+  display: grid;
+  grid-template-columns: 430px 0;
+}

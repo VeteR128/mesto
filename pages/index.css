@@ -23,3 +23,14 @@
 @import url(../blocks/element/__vector-like/element__vector-like.css);
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__copyright/footer__copyright.css);
+@import url(../blocks/popup/popup.css);
+@import url(../blocks/popup/__container/popup__container.css);
+@import url(../blocks/form/form.css);
+@import url(../blocks/form/__about/form__about.css);
+@import url(../blocks/form/__name/form__name.css);
+@import url(../blocks/form/__submit/form__submit.css);
+@import url(../blocks/form/__title/form__title.css);
+@import url(../blocks/form/__line/form__line.css);
+@import url(../blocks/form/__button-close/form__button-close.css);
+@import url(../blocks/form/__vector-close/form__vector-close.css);
+@import url(../blocks/popup/_opened/popup_opened.css);
