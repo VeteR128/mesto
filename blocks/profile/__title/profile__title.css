@@ -4,16 +4,20 @@
   font-weight: 500;
   font-size: 2.525rem;
   line-height: 114%;
-  grid-column: 1;
-  grid-row: 1;
+
   margin: 0;
+  overflow: hidden;
+
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 @media screen and (max-width: 1024px) {
   .profile__title {
     font-size: 1.525rem;
   }
 }
-@media screen and (max-width: 320px) {
+
+@media screen and (max-width: 440px) {
   .profile__title {
     font-size: 1.687rem;
     line-height: 122%;

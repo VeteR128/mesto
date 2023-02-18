@@ -12,3 +12,8 @@
   border: 0;
   outline: none;
 }
+@media screen and (max-width: 550px) {
+  .form__name {
+    margin: 0 22px;
+  }
+}

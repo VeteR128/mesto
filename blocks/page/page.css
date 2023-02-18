@@ -4,3 +4,9 @@
   margin: 0 auto;
   color: #ffffff;
 }
+
+@media screen and (max-width: 320px) {
+  .page {
+    max-width: 320px;
+  }
+}

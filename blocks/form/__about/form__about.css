@@ -12,3 +12,9 @@
   border: 0;
   outline: none;
 }
+@media screen and (max-width: 550px) {
+  .form__about {
+    margin-left: 22px;
+    margin-right: 22px;
+  }
+}

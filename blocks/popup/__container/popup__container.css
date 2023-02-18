@@ -2,3 +2,9 @@
   display: grid;
   grid-template-columns: 430px 0;
 }
+
+@media screen and (max-width: 550px) {
+  .popup__container {
+    grid-template-columns: 282px 0;
+  }
+}

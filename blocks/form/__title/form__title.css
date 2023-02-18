@@ -9,3 +9,10 @@
   color: #000000;
   margin: 34px 64px 54px 36px;
 }
+@media screen and (max-width: 550px) {
+  .form__title {
+    font-size: 1.125rem;
+    line-height: 122%;
+    margin: 25px 22px 75px;
+  }
+}

@@ -6,7 +6,7 @@
   max-height: 24px;
   height: 100%;
   margin-left: 18px;
-  align-self: end;
+  align-self: center;
   display: grid;
 }
 @media screen and (max-width: 320px) {
