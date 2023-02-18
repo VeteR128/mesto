@@ -1,10 +1,10 @@
-.form__vector {
+.popup__vector {
   position: absolute;
   top: -40px;
   left: 8px;
 }
 @media screen and (max-width: 550px) {
-  .form__vector {
+  .popup__vector {
     width: 20px;
     top: -30px;
     left: -20px;

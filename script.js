@@ -1,6 +1,6 @@
 let editbutton = document.querySelector(".profile__edit-button");
 let popup = document.querySelector(".popup");
-let closeButton = document.querySelector(".form__vector");
+let closeButton = document.querySelector(".popup__vector");
 let form = document.querySelector(".form");
 
 editbutton.addEventListener("click", function () {
