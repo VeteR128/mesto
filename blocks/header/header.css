@@ -2,6 +2,7 @@
   margin: 45px 15.625% 36.25px 15.625%;
   display: flex;
   flex-direction: column;
+  border-bottom: 1px solid rgba(84, 84, 84, 0.7);
 }
 @media screen and (max-width: 320px) {
   .header {

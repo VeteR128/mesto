@@ -5,13 +5,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="pages/index.css" />
-    <title>Document</title>
+    <title>Mesto</title>
   </head>
   <body class="body">
     <div class="page">
       <header class="header">
         <img class="header__logo" src="image/Vector.svg" alt="лого" />
-        <div class="header__line"></div>
       </header>
       <main class="main">
         <section class="profile">
@@ -19,22 +18,22 @@
           <div class="profile__info">
             <h1 class="profile__title">Жак-Ив Кусто</h1>
             <p class="profile__subtitle">Исследователь океана</p>
-            <a class="profile__edit-button link" href="#">
+            <button class="profile__edit-button link">
               <img
                 class="profile__vector-edit"
                 src="image/edit.svg"
                 alt="редактирование"
               />
-            </a>
+            </button>
           </div>
 
-          <a class="profile__add-button link" href="">
+          <button class="profile__add-button link">
             <img
               class="profile__vector-add"
               src="image/add.svg"
               alt="добавление"
             />
-          </a>
+          </button>
         </section>
         <section class="elements">
           <div class="element">
@@ -44,13 +43,13 @@
               alt="карачаевск"
             />
             <h2 class="element__title">Карачаевск</h2>
-            <a class="element__button-like" href="#">
+            <button class="element__button-like">
               <img
                 class="element__vector-like"
                 src="image/like.svg"
                 alt="лайк"
               />
-            </a>
+            </button>
           </div>
           <div class="element">
             <img
@@ -59,13 +58,13 @@
               alt="Эльбрус"
             />
             <h2 class="element__title">Гора Эльбрус</h2>
-            <a class="element__button-like" href="#">
+            <button class="element__button-like">
               <img
                 class="element__vector-like"
                 src="image/like.svg"
                 alt="лайк"
               />
-            </a>
+            </button>
           </div>
           <div class="element">
             <img
@@ -74,13 +73,13 @@
               alt="домбай"
             />
             <h2 class="element__title">Домбай</h2>
-            <a class="element__button-like" href="#">
+            <button class="element__button-like">
               <img
                 class="element__vector-like"
                 src="image/like.svg"
                 alt="лайк"
               />
-            </a>
+            </button>
           </div>
           <div class="element">
             <img
@@ -89,13 +88,13 @@
               alt="эльбрус"
             />
             <h2 class="element__title">Гора Эльбрус</h2>
-            <a class="element__button-like" href="#">
+            <button class="element__button-like">
               <img
                 class="element__vector-like"
                 src="image/like.svg"
                 alt="лайк"
               />
-            </a>
+            </button>
           </div>
           <div class="element">
             <img
@@ -104,13 +103,13 @@
               alt="домбай"
             />
             <h2 class="element__title">Домбай</h2>
-            <a class="element__button-like" href="#">
+            <button class="element__button-like">
               <img
                 class="element__vector-like"
                 src="image/like.svg"
                 alt="лайк"
               />
-            </a>
+            </button>
           </div>
           <div class="element">
             <img
@@ -119,13 +118,13 @@
               alt="Карачаево-Черкессия"
             />
             <h2 class="element__title">Карачаево-Черкессия</h2>
-            <a class="element__button-like" href="#">
+            <button class="element__button-like">
               <img
                 class="element__vector-like"
                 src="image/like.svg"
                 alt="лайк"
               />
-            </a>
+            </button>
           </div>
         </section>
       </main>
@@ -134,24 +133,24 @@
       </footer>
       <div class="popup">
         <div class="popup__container">
-          <form class="form" action="#">
+          <form class="form" name="popup" action="#">
             <h2 class="form__title">Редактировать профиль</h2>
-            <input class="form__name" type="text" value="" />
-            <div class="form__line"></div>
-            <input class="form__about" type="text" value="" />
-            <div class="form__line"></div>
-            <input type="submit" class="form__submit" />
+            <input class="form__data" name="name" type="text" value="name" />
+
+            <input class="form__data" name="about" type="text" value="about" />
+
+            <input type="submit" class="form__submit" value="Сохранить" />
           </form>
           <a class="popup__button link" href="#">
             <img
               class="popup__vector"
-              src="image/Close Icon.svg"
+              src="image/CloseIcon.svg"
               alt="закрыть"
             />
           </a>
         </div>
       </div>
     </div>
-    <script src="script.js"></script>
+    <script src="blocks/script/script.js"></script>
   </body>
 </html>

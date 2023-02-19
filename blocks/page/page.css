@@ -3,6 +3,7 @@
   width: 100%;
   margin: 0 auto;
   color: #ffffff;
+  font-family: "inter";
 }
 
 @media screen and (max-width: 320px) {

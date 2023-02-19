@@ -1,3 +1,5 @@
 .element__button-like {
   display: grid;
+  border: 0;
+  background-color: white;
 }
