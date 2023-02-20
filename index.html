@@ -18,7 +18,7 @@
           <div class="profile__info">
             <h1 class="profile__title">Жак-Ив Кусто</h1>
             <p class="profile__subtitle">Исследователь океана</p>
-            <button class="profile__edit-button link">
+            <button class="profile__edit-button link" type="button">
               <img
                 class="profile__vector-edit"
                 src="image/edit.svg"
@@ -27,7 +27,7 @@
             </button>
           </div>
 
-          <button class="profile__add-button link">
+          <button class="profile__add-button link" type="button">
             <img
               class="profile__vector-add"
               src="image/add.svg"
@@ -43,7 +43,7 @@
               alt="карачаевск"
             />
             <h2 class="element__title">Карачаевск</h2>
-            <button class="element__button-like">
+            <button class="element__button-like" type="button">
               <img
                 class="element__vector-like"
                 src="image/like.svg"
@@ -58,7 +58,7 @@
               alt="Эльбрус"
             />
             <h2 class="element__title">Гора Эльбрус</h2>
-            <button class="element__button-like">
+            <button class="element__button-like" type="button">
               <img
                 class="element__vector-like"
                 src="image/like.svg"
@@ -73,7 +73,7 @@
               alt="домбай"
             />
             <h2 class="element__title">Домбай</h2>
-            <button class="element__button-like">
+            <button class="element__button-like" type="button">
               <img
                 class="element__vector-like"
                 src="image/like.svg"
@@ -88,7 +88,7 @@
               alt="эльбрус"
             />
             <h2 class="element__title">Гора Эльбрус</h2>
-            <button class="element__button-like">
+            <button class="element__button-like" type="button">
               <img
                 class="element__vector-like"
                 src="image/like.svg"
@@ -103,7 +103,7 @@
               alt="домбай"
             />
             <h2 class="element__title">Домбай</h2>
-            <button class="element__button-like">
+            <button class="element__button-like" type="button">
               <img
                 class="element__vector-like"
                 src="image/like.svg"
@@ -118,7 +118,7 @@
               alt="Карачаево-Черкессия"
             />
             <h2 class="element__title">Карачаево-Черкессия</h2>
-            <button class="element__button-like">
+            <button class="element__button-like" type="button">
               <img
                 class="element__vector-like"
                 src="image/like.svg"
@@ -135,22 +135,32 @@
         <div class="popup__container">
           <form class="form" name="popup" action="#">
             <h2 class="form__title">Редактировать профиль</h2>
-            <input class="form__data" name="name" type="text" value="name" />
+            <input
+              class="form__data form__data_type_name"
+              name="name"
+              type="text"
+              value="name"
+            />
 
-            <input class="form__data" name="about" type="text" value="about" />
+            <input
+              class="form__data form__data_type_about"
+              name="about"
+              type="text"
+              value="about"
+            />
 
             <input type="submit" class="form__submit" value="Сохранить" />
           </form>
-          <a class="popup__button link" href="#">
+          <button class="popup__button link" type="button">
             <img
               class="popup__vector"
               src="image/CloseIcon.svg"
               alt="закрыть"
             />
-          </a>
+          </button>
         </div>
       </div>
     </div>
-    <script src="blocks/script/script.js"></script>
+    <script src="script/script.js"></script>
   </body>
 </html>
