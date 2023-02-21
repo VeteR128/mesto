@@ -1,7 +1,6 @@
 .form__data {
   margin: 0 36px;
-
-  font-family: "Inter";
+  font-family: "Inter", "Arial", sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 0.875rem;
