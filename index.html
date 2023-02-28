@@ -36,6 +36,30 @@
           </button>
         </section>
         <section class="elements">
+          <template id="element">
+            <div class="element">
+              <img
+                class="element__image"
+                src="image/kirill-pershin-1088404-unsplash.jpg"
+                alt="карачаевск"
+              />
+              <h2 class="element__title">Карачаевск</h2>
+              <button class="element__button-like" type="button">
+                <img
+                  class="element__vector-like"
+                  src="image/like.svg"
+                  alt="лайк"
+                />
+              </button>
+              <button class="element__button-delete" type="button">
+                <img
+                  class="element__vector-delete"
+                  src="image/Group.svg"
+                  alt="удаление"
+                />
+              </button>
+            </div>
+          </template>
           <div class="element">
             <img
               class="element__image"
@@ -48,6 +72,13 @@
                 class="element__vector-like"
                 src="image/like.svg"
                 alt="лайк"
+              />
+            </button>
+            <button class="element__button-delete" type="button">
+              <img
+                class="element__vector-delete"
+                src="image/Group.svg"
+                alt="удаление"
               />
             </button>
           </div>
@@ -65,6 +96,13 @@
                 alt="лайк"
               />
             </button>
+            <button class="element__button-delete" type="button">
+              <img
+                class="element__vector-delete"
+                src="image/Group.svg"
+                alt="удаление"
+              />
+            </button>
           </div>
           <div class="element">
             <img
@@ -78,6 +116,13 @@
                 class="element__vector-like"
                 src="image/like.svg"
                 alt="лайк"
+              />
+            </button>
+            <button class="element__button-delete" type="button">
+              <img
+                class="element__vector-delete"
+                src="image/Group.svg"
+                alt="удаление"
               />
             </button>
           </div>
@@ -95,6 +140,13 @@
                 alt="лайк"
               />
             </button>
+            <button class="element__button-delete" type="button">
+              <img
+                class="element__vector-delete"
+                src="image/Group.svg"
+                alt="удаление"
+              />
+            </button>
           </div>
           <div class="element">
             <img
@@ -110,6 +162,13 @@
                 alt="лайк"
               />
             </button>
+            <button class="element__button-delete" type="button">
+              <img
+                class="element__vector-delete"
+                src="image/Group.svg"
+                alt="удаление"
+              />
+            </button>
           </div>
           <div class="element">
             <img
@@ -123,6 +182,13 @@
                 class="element__vector-like"
                 src="image/like.svg"
                 alt="лайк"
+              />
+            </button>
+            <button class="element__button-delete" type="button">
+              <img
+                class="element__vector-delete"
+                src="image/Group.svg"
+                alt="удаление"
               />
             </button>
           </div>
@@ -158,6 +224,55 @@
               alt="закрыть"
             />
           </button>
+        </div>
+      </div>
+      <div class="popup">
+        <div class="popup__container">
+          <form class="form" name="popupAdd" action="#">
+            <h2 class="form__title">Новое место</h2>
+            <input
+              placeholder="Название"
+              class="form__data form__data_type_name"
+              name="name"
+              type="text"
+              value=""
+            />
+
+            <input
+              placeholder="Ссылка на картинку"
+              class="form__data form__data_type_about"
+              name="about"
+              type="text"
+              value=""
+            />
+
+            <input type="submit" class="form__submit" value="Создать" />
+          </form>
+          <button class="popup__button link" type="button">
+            <img
+              class="popup__vector"
+              src="image/CloseIcon.svg"
+              alt="закрыть"
+            />
+          </button>
+        </div>
+      </div>
+      <div class="popup popup_dark">
+        <div class="popup__image-container">
+          <img
+            class="popup__img"
+            src="image/kirill-pershin-1088404-unsplash.jpg"
+            alt="карачаево"
+          />
+
+          <button class="popup__button link" type="button">
+            <img
+              class="popup__vector"
+              src="image/CloseIcon.svg"
+              alt="закрыть"
+            />
+          </button>
+          <p class="popup__text">1231</p>
         </div>
       </div>
     </div>

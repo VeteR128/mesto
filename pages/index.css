@@ -37,3 +37,10 @@
 @import url(../blocks/link/link.css);
 @import url(../blocks/form/__data/_type/form__data_type_about.css);
 @import url(../blocks/form/__data/_type/form__data_type_name.css);
+@import url(../blocks/element/__vector-like/_active/element__vector-like_active.css);
+@import url(../blocks/element/__button-delete/element__button-delete.css);
+@import url(../blocks/element/__vector-delete/element__vector-delete.css);
+@import url(../blocks/popup/__img/popup__img.css);
+@import url(../blocks/popup/_dark/popup_dark.css);
+@import url(../blocks/popup/__text/popup__text.css);
+@import url(../blocks/popup/__image-container/popup__image-container.css);

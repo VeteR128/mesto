@@ -3,16 +3,18 @@
   grid-template-columns: 1fr 1fr 1fr;
   gap: 17px;
   margin-top: 47.25px;
-  grid-template-rows: 1fr;
+  grid-template-rows: 1fr 1fr;
 }
 @media screen and (max-width: 768px) {
   .elements {
     grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
   }
 }
 @media screen and (max-width: 320px) {
   .elements {
     grid-template-columns: 1fr;
     margin-top: 36px;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr 1fr;
   }
 }

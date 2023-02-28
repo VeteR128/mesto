@@ -1,6 +1,7 @@
 .popup__button {
   grid-column: 2;
   position: relative;
+  width: 0;
 
   padding: 0;
   border: 0;
