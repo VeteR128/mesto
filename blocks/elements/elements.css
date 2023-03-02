@@ -11,7 +11,7 @@
     grid-template-rows: 1fr 1fr 1fr;
   }
 }
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 405px) {
   .elements {
     grid-template-columns: 1fr;
     margin-top: 36px;
