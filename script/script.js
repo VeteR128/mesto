@@ -52,28 +52,7 @@ const initialCardsName = initialCards.map(function (el) {
 });
 
 for (i = 0; i < 6; i++) {
-  const formTemplate = document.querySelector("#element").content;
-  const elementTemplate = formTemplate
-    .querySelector(".element")
-    .cloneNode(true);
-  elementTemplate.querySelector(".element__title").textContent =
-    initialCardsName[i];
-  elementTemplate.querySelector(".element__image").src = initialCardslink[i];
-  elementTemplate
-    .querySelector(".element__vector-like")
-    .addEventListener("click", function (evt) {
-      evt.target.classList.toggle("element__vector-like_active");
-    });
-  elementTemplate
-    .querySelector(".element__vector-delete")
-    .addEventListener("click", function (evt) {
-      evt.target.closest(".element").remove();
-    });
-  elements.prepend(elementTemplate);
-
-  elementTemplate
-    .querySelector(".element__image")
-    .addEventListener("click", popupinfo);
+  addimage(initialCardsName[i], initialCardslink[i]);
 }
 function openpop(popup) {
   popup.classList.add("popup_opened");
@@ -90,23 +69,20 @@ function handleFormSubmit(evt) {
   profileSubtitle.textContent = formAbout.value;
   closepop(editPopup);
 }
-function popupinfo(evt) {
-  openpop(openPopup);
+function setpopupinfo(evt) {
   imagePopup.setAttribute("src", evt.target.getAttribute("src"));
   const elementPopup = evt.target.closest(".element");
   const elementtext = elementPopup.querySelector(".element__title");
   popupText.textContent = elementtext.textContent;
 }
-function addimage(evt) {
-  evt.preventDefault();
+function addimage(text, scrvalue) {
   const formTemplate = document.querySelector("#element").content;
   const elementTemplate = formTemplate
     .querySelector(".element")
     .cloneNode(true);
-  elementTemplate.querySelector(".element__title").textContent = nameCard.value;
-  nameCard.value = "";
-  elementTemplate.querySelector(".element__image").src = srcImage.value;
-  srcImage.value = "";
+  elementTemplate.querySelector(".element__title").textContent = text;
+  elementTemplate.querySelector(".element__image").src = scrvalue;
+  elementTemplate.querySelector(".element__image").alt = text;
   elementTemplate
     .querySelector(".element__vector-like")
     .addEventListener("click", function (evt) {
@@ -118,11 +94,13 @@ function addimage(evt) {
       evt.target.closest(".element").remove();
     });
   elements.prepend(elementTemplate);
-  closepop(addPopup);
 
   elementTemplate
     .querySelector(".element__image")
-    .addEventListener("click", popupinfo);
+    .addEventListener("click", (evt) => {
+      setpopupinfo(evt);
+      openpop(openPopup);
+    });
 }
 
 editbutton.addEventListener("click", () => {
@@ -142,7 +120,13 @@ closeAddBtn.addEventListener("click", () => {
 
 editForm.addEventListener("submit", handleFormSubmit);
 
-addform.addEventListener("submit", addimage);
+addform.addEventListener("submit", (evt) => {
+  evt.preventDefault();
+  addimage(nameCard.value, srcImage.value);
+  closepop(addPopup);
+  nameCard.value = "";
+  srcImage.value = "";
+});
 
 closeOpenBtn.addEventListener("click", () => {
   closepop(openPopup);
