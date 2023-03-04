@@ -1,18 +1,18 @@
-const editbutton = document.querySelector(".profile__edit-button");
+const buttonedit = document.querySelector(".profile__edit-button");
 const profileTitle = document.querySelector(".profile__title");
 const profileSubtitle = document.querySelector(".profile__subtitle");
 const formName = document.querySelector(".form__data_type_name");
 const formAbout = document.querySelector(".form__data_type_about");
-const addButton = document.querySelector(".profile__add-button");
+const Buttonadd = document.querySelector(".profile__add-button");
 const elements = document.querySelector(".elements");
 const imagePopup = document.querySelector(".popup__img");
 const popupText = document.querySelector(".popup__text");
 const editPopup = document.querySelector(".popup_type_edit");
 const addPopup = document.querySelector(".popup_type_add");
 const openPopup = document.querySelector(".popup_type_open");
-const closeOpenBtn = document.querySelector(".popup__vector_open-close");
+const btnCloseImgPopup = document.querySelector(".popup__vector_open-close");
 const closeEdit = document.querySelector(".popup__vector_edit-close");
-const closeAddBtn = document.querySelector(".popup__vector_add-close");
+const btncloseform = document.querySelector(".popup__vector_add-close");
 const editForm = document.querySelector(".form_type_edit");
 const srcImage = document.querySelector(".form__data_type_src");
 const nameCard = document.querySelector(".form__data_type_card-name");
@@ -54,10 +54,10 @@ const initialCardsName = initialCards.map(function (el) {
 for (i = 0; i < 6; i++) {
   addimage(initialCardsName[i], initialCardslink[i]);
 }
-function openpop(popup) {
+function openpopup(popup) {
   popup.classList.add("popup_opened");
 }
-function closepop(popup) {
+function closepopup(popup) {
   popup.classList.remove("popup_opened");
 }
 formName.value = profileTitle.textContent;
@@ -67,7 +67,7 @@ function handleFormSubmit(evt) {
   evt.preventDefault();
   profileTitle.textContent = formName.value;
   profileSubtitle.textContent = formAbout.value;
-  closepop(editPopup);
+  closepopup(editPopup);
 }
 function setpopupinfo(evt) {
   imagePopup.setAttribute("src", evt.target.getAttribute("src"));
@@ -99,23 +99,23 @@ function addimage(text, scrvalue) {
     .querySelector(".element__image")
     .addEventListener("click", (evt) => {
       setpopupinfo(evt);
-      openpop(openPopup);
+      openpopup(openPopup);
     });
 }
 
-editbutton.addEventListener("click", () => {
-  openpop(editPopup);
+buttonedit.addEventListener("click", () => {
+  openpopup(editPopup);
 });
-addButton.addEventListener("click", () => {
-  openpop(addPopup);
+Buttonadd.addEventListener("click", () => {
+  openpopup(addPopup);
 });
 
 closeEdit.addEventListener("click", () => {
-  closepop(editPopup);
+  closepopup(editPopup);
 });
 
-closeAddBtn.addEventListener("click", () => {
-  closepop(addPopup);
+btncloseform.addEventListener("click", () => {
+  closepopup(addPopup);
 });
 
 editForm.addEventListener("submit", handleFormSubmit);
@@ -123,11 +123,11 @@ editForm.addEventListener("submit", handleFormSubmit);
 addform.addEventListener("submit", (evt) => {
   evt.preventDefault();
   addimage(nameCard.value, srcImage.value);
-  closepop(addPopup);
+  closepopup(addPopup);
   nameCard.value = "";
   srcImage.value = "";
 });
 
-closeOpenBtn.addEventListener("click", () => {
-  closepop(openPopup);
+btnCloseImgPopup.addEventListener("click", () => {
+  closepopup(openPopup);
 });
