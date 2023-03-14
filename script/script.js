@@ -103,6 +103,25 @@ function addImage(text, scrvalue) {
       openPopup(cardPopup);
     });
 }
+function closeOverlay(popups) {
+  popups.forEach((items) =>
+    items.addEventListener("click", (evt) => {
+      if (evt.target === items) {
+        popups.forEach((item) => {
+          closePopup(item);
+        });
+      }
+    })
+  );
+}
+function pressEsc(evt) {
+  if ((evt.key = 27)) {
+    popups.forEach((items) => {
+      closePopup(items);
+    });
+  }
+}
+closeOverlay(popups);
 
 buttonEdit.addEventListener("click", () => {
   openPopup(editPopup);
@@ -133,15 +152,4 @@ btnCloseImgPopup.addEventListener("click", () => {
   closePopup(cardPopup);
 });
 
-function closeOverlay(popups) {
-  popups.forEach((items) =>
-    items.addEventListener("click", (evt) => {
-      if (evt.target === items) {
-        popups.forEach((item) => {
-          closePopup(item);
-        });
-      }
-    })
-  );
-}
-closeOverlay(popups);
+document.addEventListener("keydown", pressEsc);
