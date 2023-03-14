@@ -15,6 +15,3 @@
 
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
-.form__data:invalid {
-  border-bottom: 1px solid rgb(255, 0, 0);
-}

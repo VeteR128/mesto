@@ -47,3 +47,4 @@
 @import url(../blocks/form/__data-error/form__data-error.css);
 @import url(../blocks/form/__input/form__input.css);
 @import url(../blocks/form/__submit/_disabled/form__submit_disabled.css);
+@import url(../blocks/form/__invalid/form__invalid.css);
