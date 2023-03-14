@@ -115,7 +115,7 @@ function closeOverlay(popups) {
   );
 }
 function pressEsc(evt) {
-  if ((evt.key = 27)) {
+  if (evt.key === "Escape") {
     popups.forEach((items) => {
       closePopup(items);
     });
