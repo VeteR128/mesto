@@ -65,7 +65,7 @@ function enableValidation(config) {
 enableValidation({
   formSelector: ".form",
   inputSelector: ".form__data",
-  inputErrorClass: ".form__error_type_",
+  inputErrorClass: ".form__error-",
   errorClass: "form__data-error",
   submitButtonSelector: ".form__submit",
   inactiveButtonClass: "form__submit_disabled",
