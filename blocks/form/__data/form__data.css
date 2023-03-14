@@ -1,31 +1,20 @@
 .form__data {
-  margin: 0 36px;
   font-family: "Inter", "Arial", sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 0.875rem;
   line-height: 121%;
   max-height: 12px;
+  width: 100%;
 
   color: #000000;
   border: 0;
   outline: none;
   padding: 0;
   padding-bottom: 13px;
-  margin-bottom: 30px;
 
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 }
-.form__data:nth-last-child(2) {
-  margin-bottom: 48px;
-}
-
-@media screen and (max-width: 550px) {
-  .form__data {
-    margin-left: 22px;
-    margin-right: 22px;
-  }
-  .form__data:nth-last-child(2) {
-    margin-bottom: 45px;
-  }
+.form__data:invalid {
+  border-bottom: 1px solid rgb(255, 0, 0);
 }

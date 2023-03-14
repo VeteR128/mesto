@@ -1,7 +1,7 @@
 .popup__image-container {
   display: grid;
-  max-width: 75vw;
+
   max-height: 75vh;
-  width: 100%;
+
   justify-content: center;
 }

@@ -44,3 +44,6 @@
 @import url(../blocks/popup/_dark/popup_dark.css);
 @import url(../blocks/popup/__text/popup__text.css);
 @import url(../blocks/popup/__image-container/popup__image-container.css);
+@import url(../blocks/form/__data-error/form__data-error.css);
+@import url(../blocks/form/__input/form__input.css);
+@import url(../blocks/form/__submit/_disabled/form__submit_disabled.css);

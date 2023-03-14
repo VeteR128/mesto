@@ -17,6 +17,7 @@ const editForm = document.querySelector(".form_type_edit");
 const srcImage = document.querySelector(".form__data_type_src");
 const nameCard = document.querySelector(".form__data_type_card-name");
 const addForm = document.querySelector(".form_type_add");
+const popups = document.querySelectorAll(".popup");
 
 const initialCards = [
   {
@@ -131,3 +132,16 @@ addForm.addEventListener("submit", (evt) => {
 btnCloseImgPopup.addEventListener("click", () => {
   closePopup(cardPopup);
 });
+
+function closeOverlay(popups) {
+  popups.forEach((items) =>
+    items.addEventListener("click", (evt) => {
+      if (evt.target === items) {
+        popups.forEach((item) => {
+          closePopup(item);
+        });
+      }
+    })
+  );
+}
+closeOverlay(popups);
