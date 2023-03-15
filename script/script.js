@@ -45,24 +45,17 @@ const initialCards = [
     link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg",
   },
 ];
-const initialCardslink = initialCards.map(function (el) {
-  return el.link;
+initialCards.forEach((item) => {
+  addImage(item.name, item.link);
 });
-const initialCardsName = initialCards.map(function (el) {
-  return el.name;
-});
-
-for (i = 0; i < 6; i++) {
-  addImage(initialCardsName[i], initialCardslink[i]);
-}
 function openPopup(popup) {
   popup.classList.add("popup_opened");
+  document.addEventListener("keydown", pressEsc);
 }
 function closePopup(popup) {
   popup.classList.remove("popup_opened");
+  document.removeEventListener("keydown", pressEsc);
 }
-formName.value = profileTitle.textContent;
-formAbout.value = profileSubtitle.textContent;
 
 function handleFormSubmit(evt) {
   evt.preventDefault();
@@ -75,15 +68,17 @@ function setPopupInfo(evt) {
   const elementPopup = evt.target.closest(".element");
   const elementText = elementPopup.querySelector(".element__title");
   popupText.textContent = elementText.textContent;
+  imagePopup.setAttribute("alt", elementText.textContent);
 }
-function addImage(text, scrvalue) {
+function createCard(text, scrvalue) {
   const formTemplate = document.querySelector("#element").content;
   const elementTemplate = formTemplate
     .querySelector(".element")
     .cloneNode(true);
+  const elementImage = elementTemplate.querySelector(".element__image");
   elementTemplate.querySelector(".element__title").textContent = text;
-  elementTemplate.querySelector(".element__image").src = scrvalue;
-  elementTemplate.querySelector(".element__image").alt = text;
+  elementImage.src = scrvalue;
+  elementImage.alt = text;
   elementTemplate
     .querySelector(".element__vector-like")
     .addEventListener("click", function (evt) {
@@ -94,37 +89,37 @@ function addImage(text, scrvalue) {
     .addEventListener("click", function (evt) {
       evt.target.closest(".element").remove();
     });
-  elements.prepend(elementTemplate);
 
-  elementTemplate
-    .querySelector(".element__image")
-    .addEventListener("click", (evt) => {
-      setPopupInfo(evt);
-      openPopup(cardPopup);
-    });
+  elementImage.addEventListener("click", (evt) => {
+    setPopupInfo(evt);
+    openPopup(cardPopup);
+  });
+  return elementTemplate;
 }
-function closeOverlay(popups) {
-  popups.forEach((items) =>
-    items.addEventListener("click", (evt) => {
-      if (evt.target === items) {
-        popups.forEach((item) => {
-          closePopup(item);
-        });
+function addImage(name, link) {
+  const cardTemplate = createCard(name, link);
+  elements.prepend(cardTemplate);
+}
+function handleOverlay(popups) {
+  popups.forEach((item) =>
+    item.addEventListener("click", (evt) => {
+      if (evt.target === item) {
+        closePopup(item);
       }
     })
   );
 }
 function pressEsc(evt) {
   if (evt.key === "Escape") {
-    popups.forEach((items) => {
-      closePopup(items);
-    });
+    popups.forEach(closePopup);
   }
 }
-closeOverlay(popups);
+handleOverlay(popups);
 
 buttonEdit.addEventListener("click", () => {
   openPopup(editPopup);
+  formName.value = profileTitle.textContent;
+  formAbout.value = profileSubtitle.textContent;
 });
 buttonAdd.addEventListener("click", () => {
   openPopup(addPopup);
@@ -151,5 +146,3 @@ addForm.addEventListener("submit", (evt) => {
 btnCloseImgPopup.addEventListener("click", () => {
   closePopup(cardPopup);
 });
-
-document.addEventListener("keydown", pressEsc);

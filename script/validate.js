@@ -14,7 +14,7 @@ function hideSpanError(errorTextElement, errorClass, input, inputErrorStyle) {
   errorTextElement.classList.remove(errorClass);
   input.classList.remove(inputErrorStyle);
 }
-function checkImputValidaty(
+function checkInputValidaty(
   input,
   inputErrorClass,
   errorClass,
@@ -36,16 +36,23 @@ function checkImputValidaty(
     hideSpanError(errorTextElement, errorClass, input, inputErrorStyle);
   }
 }
-function checkImputsValidaty(inputList) {
+function checkInputsValidaty(inputList) {
   return Array.from(inputList).some((input) => !input.validity.valid);
 }
+function enableSubmitButton(submitButton, inactiveButtonClass) {
+  submitButton.classList.remove(inactiveButtonClass);
+  submitButton.disabled = false;
+}
+function disableSubmitButton(submitButton, inactiveButtonClass) {
+  submitButton.classList.add(inactiveButtonClass);
+  submitButton.disabled = true;
+}
+
 function toggleButtonState(submitButton, inactiveButtonClass, inputList) {
-  if (!checkImputsValidaty(inputList)) {
-    submitButton.classList.remove(inactiveButtonClass);
-    submitButton.disabled = false;
+  if (!checkInputsValidaty(inputList)) {
+    enableSubmitButton(submitButton, inactiveButtonClass);
   } else {
-    submitButton.classList.add(inactiveButtonClass);
-    submitButton.disabled = true;
+    disableSubmitButton(submitButton, inactiveButtonClass);
   }
 }
 function setEventListener(
@@ -59,11 +66,11 @@ function setEventListener(
 ) {
   form.addEventListener("submit", (evt) => {
     evt.preventDefault();
-    submitButton.classList.add(inactiveButtonClass);
+    disableSubmitButton(submitButton, inactiveButtonClass);
   });
   inputList.forEach((input) => {
     input.addEventListener("input", (e) => {
-      checkImputValidaty(input, inputErrorClass, errorClass, inputErrorStyle);
+      checkInputValidaty(input, inputErrorClass, errorClass, inputErrorStyle);
       toggleButtonState(submitButton, inactiveButtonClass, inputList);
     });
   });
