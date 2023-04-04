@@ -1,3 +1,6 @@
+import { FormValidator } from "./FormValidator.js";
+import { card } from "./card.js";
+
 const buttonEdit = document.querySelector(".profile__edit-button");
 const profileTitle = document.querySelector(".profile__title");
 const profileSubtitle = document.querySelector(".profile__subtitle");
@@ -18,7 +21,15 @@ const srcImage = document.querySelector(".form__data_type_src");
 const nameCard = document.querySelector(".form__data_type_card-name");
 const addForm = document.querySelector(".form_type_add");
 const popups = document.querySelectorAll(".popup");
-
+const data = {
+  formSelector: ".form",
+  inputSelector: ".form__data",
+  inputErrorClass: ".form__error-",
+  errorClass: "form__data-error",
+  submitButtonSelector: ".form__submit",
+  inactiveButtonClass: "form__submit_disabled",
+  inputErrorStyle: "form__invalid",
+};
 const initialCards = [
   {
     name: "Архыз",
@@ -45,8 +56,11 @@ const initialCards = [
     link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg",
   },
 ];
+
 initialCards.forEach((item) => {
-  addImage(item.name, item.link);
+  const Card = new card(item.name, item.link, "#element");
+  const cardElement = Card.generateCard();
+  elements.prepend(cardElement);
 });
 function openPopup(popup) {
   popup.classList.add("popup_opened");
@@ -64,42 +78,14 @@ function handleFormSubmit(evt) {
   closePopup(editPopup);
 }
 function setPopupInfo(evt) {
-  imagePopup.setAttribute("src", evt.target.getAttribute("src"));
   const elementPopup = evt.target.closest(".element");
+  const elementImage = elementPopup.querySelector(".element__image");
   const elementText = elementPopup.querySelector(".element__title");
+  imagePopup.setAttribute("src", elementImage.getAttribute("src"));
   popupText.textContent = elementText.textContent;
   imagePopup.setAttribute("alt", elementText.textContent);
 }
-function createCard(text, scrvalue) {
-  const formTemplate = document.querySelector("#element").content;
-  const elementTemplate = formTemplate
-    .querySelector(".element")
-    .cloneNode(true);
-  const elementImage = elementTemplate.querySelector(".element__image");
-  elementTemplate.querySelector(".element__title").textContent = text;
-  elementImage.src = scrvalue;
-  elementImage.alt = text;
-  elementTemplate
-    .querySelector(".element__vector-like")
-    .addEventListener("click", function (evt) {
-      evt.target.classList.toggle("element__vector-like_active");
-    });
-  elementTemplate
-    .querySelector(".element__vector-delete")
-    .addEventListener("click", function (evt) {
-      evt.target.closest(".element").remove();
-    });
 
-  elementImage.addEventListener("click", (evt) => {
-    setPopupInfo(evt);
-    openPopup(cardPopup);
-  });
-  return elementTemplate;
-}
-function addImage(name, link) {
-  const cardTemplate = createCard(name, link);
-  elements.prepend(cardTemplate);
-}
 function handleOverlay(popups) {
   popups.forEach((item) =>
     item.addEventListener("click", (evt) => {
@@ -137,7 +123,10 @@ editForm.addEventListener("submit", handleFormSubmit);
 
 addForm.addEventListener("submit", (evt) => {
   evt.preventDefault();
-  addImage(nameCard.value, srcImage.value);
+  const Card = new card(nameCard.value, srcImage.value, "#element");
+  const cardElement = Card.generateCard();
+  elements.prepend(cardElement);
+
   closePopup(addPopup);
   nameCard.value = "";
   srcImage.value = "";
@@ -146,3 +135,6 @@ addForm.addEventListener("submit", (evt) => {
 btnCloseImgPopup.addEventListener("click", () => {
   closePopup(cardPopup);
 });
+
+const validation = new FormValidator(data);
+validation.enableValidation();
