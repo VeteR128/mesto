@@ -30,11 +30,5 @@ export class card {
       .addEventListener("click", function (evt) {
         evt.target.closest(".element").remove();
       });
-    this._element
-      .querySelector(".element__image")
-      .addEventListener("click", (evt) => {
-        setPopupInfo(evt);
-        openPopup(cardPopup);
-      });
   }
 }

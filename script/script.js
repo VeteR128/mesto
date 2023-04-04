@@ -21,6 +21,7 @@ const srcImage = document.querySelector(".form__data_type_src");
 const nameCard = document.querySelector(".form__data_type_card-name");
 const addForm = document.querySelector(".form_type_add");
 const popups = document.querySelectorAll(".popup");
+
 const data = {
   formSelector: ".form",
   inputSelector: ".form__data",
@@ -57,6 +58,15 @@ const initialCards = [
   },
 ];
 
+function setPopupInfo(evt) {
+  const elementPopup = evt.target.closest(".element");
+  const elementImage = elementPopup.querySelector(".element__image");
+  const elementText = elementPopup.querySelector(".element__title");
+  imagePopup.setAttribute("src", elementImage.getAttribute("src"));
+  popupText.textContent = elementText.textContent;
+  imagePopup.setAttribute("alt", elementText.textContent);
+}
+
 initialCards.forEach((item) => {
   const Card = new card(item.name, item.link, "#element");
   const cardElement = Card.generateCard();
@@ -76,14 +86,6 @@ function handleFormSubmit(evt) {
   profileTitle.textContent = formName.value;
   profileSubtitle.textContent = formAbout.value;
   closePopup(editPopup);
-}
-function setPopupInfo(evt) {
-  const elementPopup = evt.target.closest(".element");
-  const elementImage = elementPopup.querySelector(".element__image");
-  const elementText = elementPopup.querySelector(".element__title");
-  imagePopup.setAttribute("src", elementImage.getAttribute("src"));
-  popupText.textContent = elementText.textContent;
-  imagePopup.setAttribute("alt", elementText.textContent);
 }
 
 function handleOverlay(popups) {
@@ -135,6 +137,11 @@ addForm.addEventListener("submit", (evt) => {
 btnCloseImgPopup.addEventListener("click", () => {
   closePopup(cardPopup);
 });
-
+document.addEventListener("click", (evt) => {
+  if (evt.target.classList.value === "element__image") {
+    setPopupInfo(evt);
+    openPopup(cardPopup);
+  }
+});
 const validation = new FormValidator(data);
 validation.enableValidation();

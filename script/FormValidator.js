@@ -47,9 +47,6 @@ export class FormValidator {
     });
   }
   _checkInputsValidaty() {
-    console.log(
-      Array.from(this._inputList).some((input) => !input.validity.valid)
-    );
     return Array.from(this._inputList).some((input) => !input.validity.valid);
   }
   _checkInputValidaty(input) {
