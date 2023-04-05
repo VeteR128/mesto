@@ -1,5 +1,5 @@
 import { FormValidator } from "./FormValidator.js";
-import { card } from "./card.js";
+import { Card } from "./card.js";
 
 const buttonEdit = document.querySelector(".profile__edit-button");
 const profileTitle = document.querySelector(".profile__title");
@@ -22,7 +22,7 @@ const nameCard = document.querySelector(".form__data_type_card-name");
 const addForm = document.querySelector(".form_type_add");
 const popups = document.querySelectorAll(".popup");
 
-const data = {
+const validationSettings = {
   formSelector: ".form",
   inputSelector: ".form__data",
   inputErrorClass: ".form__error-",
@@ -58,7 +58,7 @@ const initialCards = [
   },
 ];
 
-function setPopupInfo(evt) {
+function setImagePopupInfo(evt) {
   const elementPopup = evt.target.closest(".element");
   const elementImage = elementPopup.querySelector(".element__image");
   const elementText = elementPopup.querySelector(".element__title");
@@ -68,8 +68,8 @@ function setPopupInfo(evt) {
 }
 
 initialCards.forEach((item) => {
-  const Card = new card(item.name, item.link, "#element");
-  const cardElement = Card.generateCard();
+  const createCard = new Card(item.name, item.link, "#element");
+  const cardElement = createCard.generateCard();
   elements.prepend(cardElement);
 });
 function openPopup(popup) {
@@ -125,8 +125,8 @@ editForm.addEventListener("submit", handleFormSubmit);
 
 addForm.addEventListener("submit", (evt) => {
   evt.preventDefault();
-  const Card = new card(nameCard.value, srcImage.value, "#element");
-  const cardElement = Card.generateCard();
+  const newCard = new Card(nameCard.value, srcImage.value, "#element");
+  const cardElement = newCard.generateCard();
   elements.prepend(cardElement);
 
   closePopup(addPopup);
@@ -138,10 +138,12 @@ btnCloseImgPopup.addEventListener("click", () => {
   closePopup(cardPopup);
 });
 document.addEventListener("click", (evt) => {
-  if (evt.target.classList.value === "element__image") {
-    setPopupInfo(evt);
+  if (evt.target.classList.contains("element__image")) {
+    setImagePopupInfo(evt);
     openPopup(cardPopup);
   }
 });
-const validation = new FormValidator(data);
-validation.enableValidation();
+const validationEditForm = new FormValidator(validationSettings, editForm);
+validationEditForm.enableValidation();
+const validationAddForm = new FormValidator(validationSettings, addForm);
+validationAddForm.enableValidation();

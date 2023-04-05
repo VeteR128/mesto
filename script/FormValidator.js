@@ -1,21 +1,19 @@
 export class FormValidator {
-  constructor(config) {
-    this._form = document.querySelectorAll(config.formSelector);
-    this._inputList = document.querySelectorAll(config.inputSelector);
+  constructor(config, form) {
+    this._form = form;
+    this._inputList = form.querySelectorAll(config.inputSelector);
     this._inputErrorClass = config.inputErrorClass;
     this._errorClass = config.errorClass;
-    this._submitButton = document.querySelectorAll(config.submitButtonSelector);
+    this._submitButton = form.querySelector(config.submitButtonSelector);
     this._inactiveButtonClass = config.inactiveButtonClass;
     this._inputErrorStyle = config.inputErrorStyle;
   }
   enableValidation() {
-    this._form.forEach(() => {
-      this._setEventListener();
-    });
+    this._setEventListener();
   }
 
   _setEventListener() {
-    document.addEventListener("submit", (evt) => {
+    this._form.addEventListener("submit", (evt) => {
       evt.preventDefault();
       this._disableSubmitButton();
     });
@@ -35,16 +33,12 @@ export class FormValidator {
     }
   }
   _disableSubmitButton() {
-    this._submitButton.forEach((item) => {
-      item.classList.add(this._inactiveButtonClass);
-      item.disabled = true;
-    });
+    this._submitButton.classList.add(this._inactiveButtonClass);
+    this._submitButton.disabled = true;
   }
   _enableSubmitButton() {
-    this._submitButton.forEach((item) => {
-      item.classList.remove(this._inactiveButtonClass);
-      item.disabled = false;
-    });
+    this._submitButton.classList.remove(this._inactiveButtonClass);
+    this._submitButton.disabled = false;
   }
   _checkInputsValidaty() {
     return Array.from(this._inputList).some((input) => !input.validity.valid);

@@ -1,4 +1,4 @@
-export class card {
+export class Card {
   constructor(text, src, templateSelector) {
     this._text = text;
     this._src = src;
@@ -14,8 +14,9 @@ export class card {
   generateCard() {
     this._element = this._getTemplate();
     this._setEventLiseners();
-    this._element.querySelector(".element__image").src = this._src;
-    this._element.querySelector(".element__image").alt = this._text;
+    const imageEl = this._element.querySelector(".element__image");
+    imageEl.src = this._src;
+    imageEl.alt = this._text;
     this._element.querySelector(".element__title").textContent = this._text;
     return this._element;
   }
