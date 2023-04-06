@@ -66,11 +66,13 @@ function setImagePopupInfo(evt) {
   popupText.textContent = elementText.textContent;
   imagePopup.setAttribute("alt", elementText.textContent);
 }
-
-initialCards.forEach((item) => {
-  const createCard = new Card(item.name, item.link, "#element");
+function createCard(text, src, templateSelector) {
+  const createCard = new Card(text, src, templateSelector);
   const cardElement = createCard.generateCard();
   elements.prepend(cardElement);
+}
+initialCards.forEach((item) => {
+  createCard(item.name, item.link, "#element");
 });
 function openPopup(popup) {
   popup.classList.add("popup_opened");
@@ -125,10 +127,7 @@ editForm.addEventListener("submit", handleFormSubmit);
 
 addForm.addEventListener("submit", (evt) => {
   evt.preventDefault();
-  const newCard = new Card(nameCard.value, srcImage.value, "#element");
-  const cardElement = newCard.generateCard();
-  elements.prepend(cardElement);
-
+  createCard(nameCard.value, srcImage.value, "#element");
   closePopup(addPopup);
   nameCard.value = "";
   srcImage.value = "";
