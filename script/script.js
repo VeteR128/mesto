@@ -1,14 +1,17 @@
 import { FormValidator } from "./FormValidator.js";
 import { Card } from "./card.js";
-
+import { PopupWithImage } from "./popup.js";
+import { Popup } from "./popup.js";
+import { PopupWithForm } from "./popup.js";
 const buttonEdit = document.querySelector(".profile__edit-button");
 const profileTitle = document.querySelector(".profile__title");
 const profileSubtitle = document.querySelector(".profile__subtitle");
 const formName = document.querySelector(".form__data_type_name");
 const formAbout = document.querySelector(".form__data_type_about");
-const buttonAdd = document.querySelector(".profile__add-button");
+const buttonAdd = ".profile__add-button";
+const imagePopupButton = "element__image";
 const elements = document.querySelector(".elements");
-const imagePopup = document.querySelector(".popup__img");
+const imagePopup = document.querySelector(".popup_dark");
 const popupText = document.querySelector(".popup__text");
 const editPopup = document.querySelector(".popup_type_edit");
 const addPopup = document.querySelector(".popup_type_add");
@@ -76,11 +79,9 @@ initialCards.forEach((item) => {
 });
 function openPopup(popup) {
   popup.classList.add("popup_opened");
-  document.addEventListener("keydown", pressEsc);
 }
 function closePopup(popup) {
   popup.classList.remove("popup_opened");
-  document.removeEventListener("keydown", pressEsc);
 }
 
 function handleFormSubmit(evt) {
@@ -111,9 +112,6 @@ buttonEdit.addEventListener("click", () => {
   formName.value = profileTitle.textContent;
   formAbout.value = profileSubtitle.textContent;
 });
-buttonAdd.addEventListener("click", () => {
-  openPopup(addPopup);
-});
 
 closeEdit.addEventListener("click", () => {
   closePopup(editPopup);
@@ -136,13 +134,14 @@ addForm.addEventListener("submit", (evt) => {
 btnCloseImgPopup.addEventListener("click", () => {
   closePopup(cardPopup);
 });
-document.addEventListener("click", (evt) => {
-  if (evt.target.classList.contains("element__image")) {
-    setImagePopupInfo(evt);
-    openPopup(cardPopup);
-  }
-});
+function dadaya(e) {
+  e.preventDefault();
+}
 const validationEditForm = new FormValidator(validationSettings, editForm);
 validationEditForm.enableValidation();
 const validationAddForm = new FormValidator(validationSettings, addForm);
 validationAddForm.enableValidation();
+const openAddPopup = new PopupWithForm(addPopup, buttonAdd, dadaya);
+openAddPopup.setEventListeners();
+const openImagePopup = new PopupWithImage(imagePopup, imagePopupButton);
+openImagePopup.setEventListeners();
