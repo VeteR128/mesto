@@ -5,6 +5,7 @@ import { Popup } from "./popup.js";
 import { PopupWithForm } from "./PopupWithForm.js";
 import { Section } from "./sections.js";
 import { UserInfo } from "./UserInfo.js";
+import "../pages/index.css";
 import {
   buttonEdit,
   profileTitle,
@@ -23,6 +24,7 @@ import {
   addForm,
   validationSettings,
   initialCards,
+  inputsData,
 } from "./constants.js";
 const render = new Section(
   {
@@ -33,7 +35,7 @@ const render = new Section(
       render.setItem(cardElement);
     },
   },
-  ".elements"
+  elements
 );
 render.renderItems();
 
@@ -45,9 +47,22 @@ const openAddPopup = new PopupWithForm(
   addPopup,
   buttonAdd,
   function submitCallback() {
-    const createCard = new Card(nameCard.value, srcImage.value, "#element");
-    const cardElement = createCard.generateCard();
-    elements.prepend(cardElement);
+    const render = new Section(
+      {
+        data: inputsData,
+        renderer: (item) => {
+          const createCard = new Card(
+            item.nameCard.value,
+            item.srcImage.value,
+            "#element"
+          );
+          const cardElement = createCard.generateCard();
+          render.setItem(cardElement);
+        },
+      },
+      elements
+    );
+    render.renderItems();
   }
 );
 const openEditPopup = new PopupWithForm(

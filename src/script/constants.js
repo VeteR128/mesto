@@ -25,6 +25,7 @@ export const validationSettings = {
   inactiveButtonClass: "form__submit_disabled",
   inputErrorStyle: "form__invalid",
 };
+export const inputsData = [{ nameCard, srcImage }];
 
 export const initialCards = [
   {

@@ -4,24 +4,32 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="pages/index.css" />
+
     <title>Mesto</title>
   </head>
   <body class="body">
     <div class="page">
       <header class="header">
-        <img class="header__logo" src="image/Vector.svg" alt="лого" />
+        <img
+          class="header__logo"
+          src="<%=require('./image/Vector.svg')%>"
+          alt="лого"
+        />
       </header>
       <main class="main">
         <section class="profile">
-          <img class="profile__avatar" src="image/image.jpg" alt="жак" />
+          <img
+            class="profile__avatar"
+            src="<%=require('./image/image.jpg')%>"
+            alt="жак"
+          />
           <div class="profile__info">
             <h1 class="profile__title">Жак-Ив Кусто</h1>
             <p class="profile__subtitle">Исследователь океана</p>
             <button class="profile__edit-button link" type="button">
               <img
                 class="profile__vector-edit"
-                src="image/edit.svg"
+                src="<%=require('./image/edit.svg')%>"
                 alt="редактирование"
               />
             </button>
@@ -30,7 +38,7 @@
           <button class="profile__add-button link" type="button">
             <img
               class="profile__vector-add"
-              src="image/add.svg"
+              src="<%=require('./image/add.svg')%>"
               alt="добавление"
             />
           </button>
@@ -47,14 +55,14 @@
               <button class="element__button-like" type="button">
                 <img
                   class="element__vector-like"
-                  src="image/like.svg"
+                  src="<%=require('./image/like.svg')%>"
                   alt="лайк"
                 />
               </button>
               <button class="element__button-delete" type="button">
                 <img
                   class="element__vector-delete"
-                  src="image/Group.svg"
+                  src="<%=require('./image/Group.svg')%>"
                   alt="удаление"
                 />
               </button>
@@ -99,7 +107,7 @@
           <button class="popup__button link" type="button">
             <img
               class="popup__vector popup__vector_edit-close"
-              src="image/CloseIcon.svg"
+              src="<%=require('./image/CloseIcon.svg')%>"
               alt="закрыть"
             />
           </button>
@@ -143,7 +151,7 @@
           <button class="popup__button link" type="button">
             <img
               class="popup__vector popup__vector_add-close"
-              src="image/CloseIcon.svg"
+              src="<%=require('./image/CloseIcon.svg')%>"
               alt="закрыть"
             />
           </button>
@@ -160,7 +168,7 @@
           <button class="popup__button link" type="button">
             <img
               class="popup__vector popup__vector_open-close"
-              src="image/CloseIcon.svg"
+              src="<%=require('./image/CloseIcon.svg')%>"
               alt="закрыть"
             />
           </button>
@@ -168,6 +176,5 @@
         </div>
       </div>
     </div>
-    <script type="module" src="script/script.js"></script>
   </body>
 </html>
