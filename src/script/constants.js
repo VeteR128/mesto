@@ -1,10 +1,8 @@
-export const buttonEdit = ".profile__edit-button";
 export const profileTitle = document.querySelector(".profile__title");
 export const profileSubtitle = document.querySelector(".profile__subtitle");
 export const formName = document.querySelector(".form__data_type_name");
 export const formAbout = document.querySelector(".form__data_type_about");
-export const buttonAdd = ".profile__add-button";
-export const imagePopupButton = "element__image";
+
 export const elements = document.querySelector(".elements");
 export const imagePopup = document.querySelector(".popup_dark");
 
@@ -25,31 +23,31 @@ export const validationSettings = {
   inactiveButtonClass: "form__submit_disabled",
   inputErrorStyle: "form__invalid",
 };
-export const inputsData = [{ nameCard, srcImage }];
+export const inputsData = [{ name: nameCard.value, link: srcImage.value }];
 
 export const initialCards = [
   {
-    name: "Архыз",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg",
+    card: "Архыз",
+    url: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg",
   },
   {
-    name: "Челябинская область",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg",
+    card: "Челябинская область",
+    url: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg",
   },
   {
-    name: "Иваново",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg",
+    card: "Иваново",
+    url: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg",
   },
   {
-    name: "Камчатка",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg",
+    card: "Камчатка",
+    url: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg",
   },
   {
-    name: "Холмогорский район",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg",
+    card: "Холмогорский район",
+    url: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg",
   },
   {
-    name: "Байкал",
-    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg",
+    card: "Байкал",
+    url: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg",
   },
 ];

@@ -1,30 +1,27 @@
 export class Popup {
-  constructor(popup, openButton) {
+  constructor(popup) {
     this._popup = popup;
-    this._openButton = openButton;
-  }
-  open(Event) {
-    if (Event.target.closest(this._openButton)) {
-      this._popup.classList.add("popup_opened");
-    }
-  }
-  close = () => {
-    this._popup.classList.remove("popup_opened");
-  };
-  setEventListeners() {
-    document.addEventListener("click", (e) => {
-      this.open(e);
-    });
-    let closeBtn = this._popup.querySelector(".popup__vector");
-    closeBtn.addEventListener("click", this.close);
-    this._popup.addEventListener("click", (e) => {
-      if (e.target.classList.contains("popup_opened")) {
+    this._event = (e) => {
+      if (
+        e.target.classList.contains("popup_opened") ||
+        e.target.classList.contains("popup__vector")
+      ) {
         this.close();
       }
-    });
+    };
+  }
+  open() {
+    this._popup.classList.add("popup_opened");
     document.addEventListener("keydown", (e) => {
       this._handleEscClose(e);
     });
+  }
+  close() {
+    this._popup.classList.remove("popup_opened");
+    this._popup.removeEventListener("click", this._event);
+  }
+  setEventListeners() {
+    this._popup.addEventListener("click", this._event);
   }
   _handleEscClose(Event) {
     if (Event.key === "Escape") {

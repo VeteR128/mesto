@@ -8,8 +8,10 @@ export class UserInfo {
     const userAbout = this._about.textContent;
     return { userName, userAbout };
   }
-  setUserInfo(userNameValue, userAboutValue) {
-    this._name.textContent = userNameValue.value;
-    this._about.textContent = userAboutValue.value;
+  setUserInfo(item) {
+    console.log(item);
+    console.log(item[0].name);
+    this._name.textContent = item[0].name;
+    this._about.textContent = item[0].about;
   }
 }
