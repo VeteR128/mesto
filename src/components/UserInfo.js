@@ -9,8 +9,6 @@ export class UserInfo {
     return { userName, userAbout };
   }
   setUserInfo(item) {
-    console.log(item);
-    console.log(item[0].name);
     this._name.textContent = item[0].name;
     this._about.textContent = item[0].about;
   }

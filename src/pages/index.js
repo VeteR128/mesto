@@ -3,7 +3,7 @@ import { Card } from "../components/Card.js";
 import { PopupWithImage } from "../components/PopupWithImage.js";
 import { Popup } from "../components/Popup.js";
 import { PopupWithForm } from "../components/PopupWithForm.js";
-import { Section } from "../components/Sections.js";
+import { Section } from "../components/Section.js";
 import { UserInfo } from "../components/UserInfo.js";
 import "../pages/index.css";
 import {
@@ -19,8 +19,10 @@ import {
   addPopup,
   editForm,
   addForm,
-} from "../utils/utils.js";
-import { validationSettings, initialCards } from "../components/constants.js";
+  validationSettings,
+  initialCards,
+} from "../utils/constans.js";
+
 const openImagePopup = new PopupWithImage(imagePopup);
 openImagePopup.setEventListeners();
 const createCard = (name, link) => {
@@ -56,7 +58,7 @@ const openEditPopup = new PopupWithForm(editPopup, function handleFormSubmit(
 ) {
   setPopupInfo.setUserInfo(item);
 });
-console.log(formName);
+
 openEditPopup.setEventListeners();
 document.querySelector(buttonEdit).addEventListener("click", () => {
   openEditPopup.open();
