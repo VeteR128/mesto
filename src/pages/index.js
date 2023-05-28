@@ -1,13 +1,14 @@
 import { FormValidator } from "../components/FormValidator.js";
-import { Card } from "../components/card.js";
+import { Card } from "../components/Card.js";
 import { PopupWithImage } from "../components/PopupWithImage.js";
-import { Popup } from "../components/popup.js";
+import { Popup } from "../components/Popup.js";
 import { PopupWithForm } from "../components/PopupWithForm.js";
-import { Section } from "../components/sections.js";
+import { Section } from "../components/Sections.js";
 import { UserInfo } from "../components/UserInfo.js";
 import "../pages/index.css";
-import { buttonEdit, buttonAdd, imagePopupButton } from "../utils/utils.js";
 import {
+  buttonEdit,
+  buttonAdd,
   profileTitle,
   profileSubtitle,
   formName,
@@ -17,44 +18,37 @@ import {
   editPopup,
   addPopup,
   editForm,
-  srcImage,
-  nameCard,
   addForm,
-  validationSettings,
-  initialCards,
-  inputsData,
-} from "../components/constants.js";
+} from "../utils/utils.js";
+import { validationSettings, initialCards } from "../components/constants.js";
 const openImagePopup = new PopupWithImage(imagePopup);
+openImagePopup.setEventListeners();
 const createCard = (name, link) => {
   const card = new Card(name, link, "#element", function handleCardClick(
     text,
     src
   ) {
-    openImagePopup.setEventListeners();
     openImagePopup.open(text, src);
   });
   return card.generateCard();
 };
-const renderCards = (cards, elements) => {
-  const render = new Section(
-    {
-      data: cards,
-      renderer: (item) => {
-        render.setItem(createCard(item.card, item.url));
-      },
+
+const render = new Section(
+  {
+    renderer: (item) => {
+      render.setItem(createCard(item.card, item.url));
     },
-    elements
-  );
-  render.renderItems();
-};
-renderCards(initialCards, elements);
+  },
+  elements
+);
+render.renderItems(initialCards);
 
 const validationEditForm = new FormValidator(validationSettings, editForm);
 validationEditForm.enableValidation();
 const validationAddForm = new FormValidator(validationSettings, addForm);
 validationAddForm.enableValidation();
 const openAddPopup = new PopupWithForm(addPopup, function submitCallback(item) {
-  renderCards(item, elements);
+  render.renderItems(item);
 });
 const setPopupInfo = new UserInfo(profileTitle, profileSubtitle);
 const openEditPopup = new PopupWithForm(editPopup, function handleFormSubmit(
@@ -63,15 +57,14 @@ const openEditPopup = new PopupWithForm(editPopup, function handleFormSubmit(
   setPopupInfo.setUserInfo(item);
 });
 console.log(formName);
+openEditPopup.setEventListeners();
 document.querySelector(buttonEdit).addEventListener("click", () => {
-  openEditPopup.setEventListeners();
   openEditPopup.open();
   const popupInfo = setPopupInfo.getUserInfo();
   formName.value = popupInfo.userName;
   formAbout.value = popupInfo.userAbout;
 });
-
+openAddPopup.setEventListeners();
 document.querySelector(buttonAdd).addEventListener("click", () => {
   openAddPopup.open();
-  openAddPopup.setEventListeners();
 });

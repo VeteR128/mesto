@@ -9,6 +9,7 @@ export class Popup {
         this.close();
       }
     };
+    this.__handleEscClose = this._handleEscClose.bind(this);
   }
   open() {
     this._popup.classList.add("popup_opened");
@@ -18,7 +19,7 @@ export class Popup {
   }
   close() {
     this._popup.classList.remove("popup_opened");
-    this._popup.removeEventListener("click", this._event);
+    document.removeEventListener("keydown", this.__handleEscClose);
   }
   setEventListeners() {
     this._popup.addEventListener("click", this._event);
