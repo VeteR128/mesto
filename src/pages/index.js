@@ -1,12 +1,12 @@
-import { FormValidator } from "../script/FormValidator.js";
-import { Card } from "../script/card.js";
-import { PopupWithImage } from "../script/PopupWithImage.js";
-import { Popup } from "../script/popup.js";
-import { PopupWithForm } from "../script/PopupWithForm.js";
-import { Section } from "../script/sections.js";
-import { UserInfo } from "../script/UserInfo.js";
+import { FormValidator } from "../components/FormValidator.js";
+import { Card } from "../components/card.js";
+import { PopupWithImage } from "../components/PopupWithImage.js";
+import { Popup } from "../components/popup.js";
+import { PopupWithForm } from "../components/PopupWithForm.js";
+import { Section } from "../components/sections.js";
+import { UserInfo } from "../components/UserInfo.js";
 import "../pages/index.css";
-import { buttonEdit, buttonAdd, imagePopupButton } from "../script/utils.js";
+import { buttonEdit, buttonAdd, imagePopupButton } from "../utils/utils.js";
 import {
   profileTitle,
   profileSubtitle,
@@ -23,7 +23,7 @@ import {
   validationSettings,
   initialCards,
   inputsData,
-} from "../script/constants.js";
+} from "../components/constants.js";
 const openImagePopup = new PopupWithImage(imagePopup);
 const createCard = (name, link) => {
   const card = new Card(name, link, "#element", function handleCardClick(
