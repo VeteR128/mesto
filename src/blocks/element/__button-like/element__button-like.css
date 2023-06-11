@@ -1,5 +1,6 @@
 .element__button-like {
-  display: grid;
+  display: flex;
+  flex-direction: column;
   border: 0;
   background-color: white;
   padding: 0;

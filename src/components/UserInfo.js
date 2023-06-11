@@ -9,7 +9,7 @@ export class UserInfo {
     return { userName, userAbout };
   }
   setUserInfo(item) {
-    this._name.textContent = item[0].name;
+    this._name.textContent = item[0].namew;
     this._about.textContent = item[0].about;
   }
 }

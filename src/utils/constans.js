@@ -1,5 +1,7 @@
 export const buttonEdit = ".profile__edit-button";
 export const buttonAdd = ".profile__add-button";
+export const buttonAvatar = ".profile__editavatar-button";
+
 export const validationSettings = {
   formSelector: ".form",
   inputSelector: ".form__data",
@@ -40,13 +42,14 @@ export const profileTitle = document.querySelector(".profile__title");
 export const profileSubtitle = document.querySelector(".profile__subtitle");
 export const formName = document.querySelector(".form__data_type_name");
 export const formAbout = document.querySelector(".form__data_type_about");
-
+export const profileAvatar = document.querySelector(".profile__avatar");
 export const elements = document.querySelector(".elements");
 export const imagePopup = document.querySelector(".popup_dark");
-
+export const avatarPopup = document.querySelector(".popup_type_avatar");
 export const editPopup = document.querySelector(".popup_type_edit");
 export const addPopup = document.querySelector(".popup_type_add");
-
+export const avatarForm = document.querySelector(".form_type_avatar");
 export const editForm = document.querySelector(".form_type_edit");
+export const choisePopup = document.querySelector(".popup_type_choise");
 
 export const addForm = document.querySelector(".form_type_add");
