@@ -55,6 +55,28 @@ class Api {
       }
     );
   };
+  like = (id) => {
+    return fetch(
+      `https://mesto.nomoreparties.co/v1/${this._cohort}/cards/${id}/likes`,
+      {
+        method: "PUT",
+        headers: {
+          authorization: this._authorization,
+        },
+      }
+    );
+  };
+  dislike = (id) => {
+    return fetch(
+      `https://mesto.nomoreparties.co/v1/${this._cohort}/cards/${id}/likes`,
+      {
+        method: "DELETE",
+        headers: {
+          authorization: this._authorization,
+        },
+      }
+    );
+  };
   addNewCard = (name, link) => {
     return fetch(`https://mesto.nomoreparties.co/v1/${this._cohort}/cards`, {
       method: "POST",

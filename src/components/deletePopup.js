@@ -7,6 +7,14 @@ export class DeletePopup extends Popup {
     this._form = this._popup.querySelector(".form");
   }
 
+  closeSubmit = () => {
+    this._form.querySelector(".form__submit").value = "Удаление...";
+    setTimeout(() => {
+      super.close();
+      this._form.querySelector(".form__submit").value = "Удалить";
+    }, 1500);
+  };
+
   setEventListeners(el) {
     super.setEventListeners();
     console.log(el.id);
@@ -16,7 +24,7 @@ export class DeletePopup extends Popup {
       this._callback(el.id);
     });
     this._form.addEventListener("submit", () => {
-      super.close();
+      this.closeSubmit();
     });
   }
 }

@@ -38,7 +38,7 @@ const deletePopup = new DeletePopup(choisePopup, function deleteCard(id) {
 
 const openImagePopup = new PopupWithImage(imagePopup);
 openImagePopup.setEventListeners();
-const createCard = (name, link, id, owner) => {
+const createCard = (name, link, id, owner, isLike, likeCount) => {
   const card = new Card(
     name,
     link,
@@ -52,7 +52,17 @@ const createCard = (name, link, id, owner) => {
       deletePopup.setEventListeners(element);
     },
     id,
-    owner
+    owner,
+    function like(id) {
+      getInfo.like(id).then((res) => {
+        console.log(res);
+      });
+    },
+    function dislike(id) {
+      getInfo.dislike(id).then((res) => console.log(res));
+    },
+    isLike,
+    likeCount
   );
   return card.generateCard();
 };
@@ -61,7 +71,14 @@ const render = new Section(
   {
     renderer: (item) => {
       render.setItem(
-        createCard(item.name, item.link, item._id, item.owner.about)
+        createCard(
+          item.name,
+          item.link,
+          item._id,
+          item.owner.about,
+          item.likes,
+          item.likes.length
+        )
       );
     },
   },
@@ -90,7 +107,7 @@ const openAddPopup = new PopupWithForm(addPopup, function submitCallback(item) {
     .then((er) => {
       setTimeout(() => {
         render.renderItems([er[0]]);
-      }, 100);
+      }, 3000);
     });
 });
 const setPopupInfo = new UserInfo(profileTitle, profileSubtitle);
