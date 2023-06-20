@@ -39,6 +39,9 @@ const deletePopup = new DeletePopup(choisePopup, function deleteCard(id) {
       document.getElementById(id).remove();
       deletePopup.close();
     })
+    .catch((ser) => {
+      alert(ser);
+    })
     .finally(() => {
       deletePopup.setSubmitValue();
     });
@@ -69,13 +72,23 @@ const createCard = (
     id,
     owner,
     function like(id) {
-      getInfo.like(id).then((res) => {
-        console.log(res);
-        card.likeStatus(res.likes.length);
-      });
+      getInfo
+        .like(id)
+        .then((res) => {
+          console.log(res);
+          card.likeStatus(res.likes.length);
+        })
+        .catch((ser) => {
+          alert(ser);
+        });
     },
     function dislike(id) {
-      getInfo.dislike(id).then((res) => card.likeStatus(res.likes.length));
+      getInfo
+        .dislike(id)
+        .then((res) => card.likeStatus(res.likes.length))
+        .catch((ser) => {
+          alert(ser);
+        });
     },
     isLike,
     likeCount,
@@ -119,6 +132,9 @@ const openAddPopup = new PopupWithForm(addPopup, function submitCallback(item) {
       console.log(er);
       return er;
     })
+    .catch((ser) => {
+      alert(ser);
+    })
     .then((da) => {
       render.renderItems([da[0]]);
     })
@@ -140,6 +156,9 @@ const openEditPopup = new PopupWithForm(editPopup, function handleFormSubmit(
     .then(() => {
       openEditPopup.closeSubmit();
     })
+    .catch((ser) => {
+      alert(ser);
+    })
     .finally(() => {
       openEditPopup.returnSubmitValue();
     });
@@ -152,12 +171,10 @@ const openAvatarPopup = new PopupWithForm(avatarPopup, function editAvatar(
   console.log(profileAvatar.src);
   getInfo
     .patchAvatarImage(item[0].avatar)
-    .then(
-      () => setPopupInfo.setAvatar(item, profileAvatar),
-      () => {
-        alert("-_-");
-      }
-    )
+    .then(() => setPopupInfo.setAvatar(item, profileAvatar))
+    .catch((ser) => {
+      alert(ser);
+    })
     .then(() => {
       openAvatarPopup.closeSubmit();
     })
@@ -189,9 +206,13 @@ document.addEventListener("click", (e) => {
   }
 });
 
-Promise.all([getInfo.getUserInfo(), getInfo.getCards()]).then((res) => {
-  setPopupInfo.setAvatar(res[0].avatar, profileAvatar);
-  profileAvatar.id = res[0]._id;
-  setPopupInfo.setUserInfo(res[0]);
-  render.renderItems(res[1]);
-});
+Promise.all([getInfo.getUserInfo(), getInfo.getCards()])
+  .then((res) => {
+    setPopupInfo.setAvatar(res[0].avatar, profileAvatar);
+    profileAvatar.id = res[0]._id;
+    setPopupInfo.setUserInfo(res[0]);
+    render.renderItems(res[1]);
+  })
+  .catch((ser) => {
+    alert(ser);
+  });
