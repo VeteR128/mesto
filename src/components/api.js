@@ -8,13 +8,13 @@ class Api {
     return fetch(`https://nomoreparties.co/v1/${this._cohort}/users/me`, {
       method: "GET",
       headers: { authorization: this._authorization },
-    });
+    }).then(this._checkResponse);
   };
   getCards = () => {
     return fetch(`https://mesto.nomoreparties.co/v1/${this._cohort}/cards`, {
       method: "GET",
       headers: { authorization: this._authorization },
-    });
+    }).then(this._checkResponse);
   };
   patchUserInfo = (name, about) => {
     return fetch(`https://mesto.nomoreparties.co/v1/${this._cohort}/users/me`, {
@@ -27,7 +27,7 @@ class Api {
         name: name,
         about: about,
       }),
-    });
+    }).then(this._checkResponse);
   };
   patchAvatarImage = (avatar) => {
     return fetch(
@@ -42,7 +42,7 @@ class Api {
           avatar: avatar,
         }),
       }
-    );
+    ).then(this._checkResponse);
   };
   deleteCard = (id) => {
     return fetch(
@@ -53,7 +53,7 @@ class Api {
           authorization: this._authorization,
         },
       }
-    );
+    ).then(this._checkResponse);
   };
   like = (id) => {
     return fetch(
@@ -64,7 +64,7 @@ class Api {
           authorization: this._authorization,
         },
       }
-    );
+    ).then(this._checkResponse);
   };
   dislike = (id) => {
     return fetch(
@@ -75,7 +75,7 @@ class Api {
           authorization: this._authorization,
         },
       }
-    );
+    ).then(this._checkResponse);
   };
   addNewCard = (name, link) => {
     return fetch(`https://mesto.nomoreparties.co/v1/${this._cohort}/cards`, {
@@ -88,7 +88,14 @@ class Api {
         name: name,
         link: link,
       }),
-    });
+    }).then(this._checkResponse);
   };
+  _checkResponse(res) {
+    if (res.ok) {
+      return res.json();
+    } else {
+      return Promise.reject(`Ошибка ${res.status}`);
+    }
+  }
 }
 export default Api;
