@@ -36,7 +36,6 @@ const deletePopup = new DeletePopup(choisePopup, function deleteCard(id) {
   getInfo
     .deleteCard(id)
     .then(() => {
-      console.log(document.getElementById(id));
       document.getElementById(id).remove();
       deletePopup.close();
     })

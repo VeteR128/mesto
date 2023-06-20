@@ -6,10 +6,11 @@ export class DeletePopup extends Popup {
 
     this._form = this._popup.querySelector(".form");
     this._submit = this._form.querySelector(".form__submit");
-    this.loh = (el) => {
-      this._callback(el.id);
+    this.submit = () => this._callback(this.element.id);
+    this.submitValue = () => {
+      this.closeSubmit();
     };
-    this.remSubmit = () => {};
+
     this._event = (e) => {
       if (
         e.target.classList.contains("popup_opened") ||
@@ -32,20 +33,13 @@ export class DeletePopup extends Popup {
   };
 
   setEventListeners(el) {
+    this.element = el;
     this._popup.addEventListener("click", this._event);
-    this._form.addEventListener("submit", () => {
-      this.loh(el);
-    });
-    this._form.addEventListener("submit", () => {
-      this.closeSubmit();
-    });
+    this._form.addEventListener("submit", this.submit);
+    this._form.addEventListener("submit", this.submitValue);
   }
   removeEventListener() {
-    this._form.removeEventListener("submit", () => {
-      this.loh(el);
-    });
-    this._form.removeEventListener("submit", () => {
-      this.closeSubmit();
-    });
+    this._form.removeEventListener("submit", this.submit);
+    this._form.removeEventListener("submit", this.submitValue);
   }
 }
