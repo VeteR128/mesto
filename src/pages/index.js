@@ -125,18 +125,11 @@ validationAddForm.enableValidation();
 const validationAvatarForm = new FormValidator(validationSettings, avatarForm);
 validationAvatarForm.enableValidation();
 const openAddPopup = new PopupWithForm(addPopup, function submitCallback(item) {
-  getInfo.addNewCard(item[0].name, item[0].link);
   getInfo
-    .getCards()
-    .then((er) => {
-      console.log(er);
-      return er;
-    })
+    .addNewCard(item[0].name, item[0].link)
+    .then((res) => render.renderItems([res]))
     .catch((ser) => {
       alert(ser);
-    })
-    .then((da) => {
-      render.renderItems([da[0]]);
     })
     .then(() => {
       openAddPopup.closeSubmit();
@@ -149,12 +142,11 @@ const setPopupInfo = new UserInfo(profileTitle, profileSubtitle);
 const openEditPopup = new PopupWithForm(editPopup, function handleFormSubmit(
   item
 ) {
-  setPopupInfo.setUserInfo(item);
-
   getInfo
-    .patchUserInfo(profileTitle.textContent, profileSubtitle.textContent)
+    .patchUserInfo(item[0].namew, item[0].about)
     .then(() => {
       openEditPopup.closeSubmit();
+      setPopupInfo.setUserInfo(item);
     })
     .catch((ser) => {
       alert(ser);
